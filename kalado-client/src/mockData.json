@@ -1,0 +1,172 @@
+{
+    "items": [
+        {
+            "title": "Samsung A54",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 15000000
+            },
+            "city": "تهران",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "id": "1",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Iphone 15",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 60000000
+            },
+            "city": "شیراز",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "id": "2",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Xiaomi Redmi Note 11",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 8000000
+            },
+            "city": "اصفهان",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "id": "3",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "OnePlus Nord CE 5G",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 12000000
+            },
+            "city": "مشهد",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "4",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Google Pixel 6a",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 9000000
+            },
+            "city": "تبریز",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "5",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Oppo Reno8 Pro",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 11000000
+            },
+            "city": "شیراز",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "6",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Samsung A54",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 15000000
+            },
+            "city": "تهران",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "7",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Iphone 15",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 60000000
+            },
+            "city": "شیراز",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "8",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Xiaomi Redmi Note 11",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 8000000
+            },
+            "city": "اصفهان",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "9",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "OnePlus Nord CE 5G",
+            "imageUrls": [
+                "https://via.placeholder.com/150"
+            ],
+            "price": {
+                "amount": 12000000
+            },
+            "city": "مشهد",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "10",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Google Pixel 6a",
+            "imageUrls": [
+                "http://kaladoshop.com:8083/v1/images/201e6243-26e9-4331-8a23-04b08ccc8abf.png"
+            ],
+            "price": {
+                "amount": 9000000
+            },
+            "city": "تبریز",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "11",
+            "sellerPhoneNumber": "09123498076"
+        },
+        {
+            "title": "Oppo Reno8 Pro",
+            "imageUrls": [
+                "http://kaladoshop.com:8083/v1/images/201e6243-26e9-4331-8a23-04b08ccc8abf.png"
+            ],
+            "price": {
+                "amount": 11000000
+            },
+            "city": "شیراز",
+            "createdAt": 1736122836240,
+            "description": "موبایل خیلی خوبی است. دوماه بیشتر استفاده نشده است.",
+            "itemId": "12",
+            "sellerPhoneNumber": "09123498076"
+        }
+    ]
+}

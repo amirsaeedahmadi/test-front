@@ -1,0 +1,12 @@
+version: '3.8'
+
+
+services:
+  front:
+    image: amiril/vite-react-front:latest
+    container_name: vite_react_front
+    ports:
+      - "8080:80" 
+    restart: always
+    environment:
+      - NODE_ENV=production

@@ -1,0 +1,24 @@
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import resources from './resource.json';
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: {
+        translation: resources.en,
+      },
+      fa: {
+        translation: resources.fa,
+      },
+    },
+    lng: 'fa',
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false,
+    },
+    debug: true, // Set to false in production
+  });
+
+export default i18n;

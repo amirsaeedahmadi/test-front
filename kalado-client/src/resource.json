@@ -1,0 +1,552 @@
+{
+    "en": {
+        "brand_name": "Kalado",
+        "currency": "Toman",
+        "general_inputs": {
+            "email": "Email",
+            "password": "Password",
+            "password_repeat": "Password Repeat",
+            "phone_number": "Phone Number",
+            "first_name": "First Name",
+            "last_name": "Last Name",
+            "price": "Price",
+            "date": "Date",
+            "code": "Verification Code",
+            "add_image": "Add Image",
+            "description": "Description",
+            "category": "Category",
+            "no_option": "No option"
+        },
+        "navbar": {
+            "create_ad": "Submit Ad",
+            "login/signup": "Login/Signup",
+            "profile": "Profile",
+            "searchbar": "Search Item",
+            "logout": "Logout"
+        },
+        "category": {
+            "title": "Categories",
+            "one": "Real Estate",
+            "two": "Transportation",
+            "three": "Home & Kitchen",
+            "four": "Digital Stuff",
+            "five": "Entertainment",
+            "six": "Personal Stuff",
+            "seven": "Others"
+        },
+        "filter": {
+            "title": "Filters",
+            "price": "Price",
+            "min_price": "Minimum",
+            "max_price": "Maximum",
+            "ad_date": "Ad Date",
+            "one_day": "One Day",
+            "one_week": "One Week",
+            "one_month": "One Month",
+            "apply": "Apply Filter"
+        },
+        "sort": {
+            "newest": "Newest",
+            "oldest": "Oldest",
+            "most_expensive": "Most Expensive",
+            "cheapest": "Cheapest"
+        },
+        "search": {
+            "option1": "laptop",
+            "option2": "house",
+            "option3": "phone",
+            "option4": "sofa",
+            "option5": "refrigerator",
+            "option6": "shoes",
+            "option7": "headphone",
+            "option8": "tv",
+            "option9": "car",
+            "option10": "game"
+        },
+        "create_ad": {
+            "input": {
+                "title": "Ad's Title",
+                "price": "Price",
+                "category": "Category",
+                "description": "Description",
+                "add_image": "Add Image",
+                "production_year": "Production Year",
+                "brand": "Brand"
+            },
+            "default": {
+                "category": "Select Category"
+            },
+            "choose_image": "Choose Image",
+            "create_ad_btn": "Submit Ad"
+        },
+        "login_form": {
+            "login_btn": "Login",
+            "signup_link": "Create new account",
+            "forget_password_link": "Forget password"
+        },
+        "forget_password_form": {
+            "enter_your_email": "Enter your email to retrieve your password.",
+            "forget_password_btn": "Send Email"
+        },
+        "signup_form": {
+            "signup_btn": "Signup",
+            "login_link": "In case of having account, click here.",
+            "code_verification_link": "Verify your registration code",
+            "is_admin": "I'm Admin",
+            "error": {
+                "password_mismatch": "Password mismatch"
+            }
+        },
+        "code_verification": {
+            "verify_btn": "Verify",
+            "enter_code": "Please enter the verification code sent to your email."
+        },
+        "item_details": {
+            "price": "Price",
+            "city": "City",
+            "date": "Issued Date",
+            "description": "Description",
+            "report_submission_btn": "Submit Report",
+            "no_title": "Unknown Title",
+            "no_brand": "Unknown Brand",
+            "no_date": "Unlnown Date",
+            "no_description": "No description available",
+            "no_seller_phone": "Unknown Seller Phone"
+        },
+        "report": {
+            "input": {
+                "category": "Report's Type",
+                "description": "Description"
+            },
+            "category": {
+                "one": "Abusiveness",
+                "two": "Inappropriate Content",
+                "three": "Inappropriate Price",
+                "four": "Others"
+            },
+            "choose_evidence": "Evidence/Documents",
+            "user_management": {
+                "title": "User Management",
+                "user_info": "User Information",
+                "email": "Email Address",
+                "status": "Status",
+                "allowed": "Allowed",
+                "blocked": "Blocked",
+                "confirmation_title": "Change User Status",
+                "confirmation_message": "Are you sure you want to change the status of {{email}} to {{status}}?",
+                "confirm": "Confirm",
+                "cancel": "Cancel"
+            },
+            "report_card": {
+                "history_title": "Violation History",
+                "violation_type": "Violation Type",
+                "reporter_id": "Reporter User ID",
+                "content_id": "Reported Content ID",
+                "description": "Description",
+                "submission_date": "Submission Date",
+                "evidence": "Evidence",
+                "actions": {
+                    "show_details": "Show Details",
+                    "go_to_ad": "Go to Ad",
+                    "block_ad": "Block Ad",
+                    "block_user": "Block User",
+                    "back_to_list": "Back to List"
+                },
+                "block_confirmation": {
+                    "title_usr": "Are you Sure to Block this User?",
+                    "title_ad": "Are you Sure to Block this Ad?"
+                },
+                "block_usr_success_message": "The user has been successfully blocked.",
+                "block_ad_success_message": "The ad has been successfully blocked.",
+                "no_reports": "No reports found."
+            },
+            "error": {
+                "missing_violation_type": "Violation type is required.",
+                "missing_description_or_image": "You must provide either a description or at least one piece of evidence.",
+                "submission_failed": "An error occurred while submitting the report. Please try again."
+            },
+            "success": {
+                "report_submitted": "Your report has been successfully submitted."
+            }
+        },
+        "dashboard": {
+            "user": {
+                "menu": {
+                    "one": "Profile Management",
+                    "two": "Ads Management",
+                    "three": "Report History"
+                },
+                "profile_management": {
+                    "first_name": "First Name",
+                    "last_name": "Last Name",
+                    "email": "Email",
+                    "password": "Password",
+                    "phone_number": "Phone Number",
+                    "address": "Address",
+                    "save_changes_btn": "Save Changes"
+                }
+            },
+            "admin": {
+                "menu": {
+                    "one": "Profile Management",
+                    "two": "Users Management",
+                    "three": "Report History"
+                }
+            }
+        },
+        "ad_list": {
+            "heading": "Submitted Ads History",
+            "save_success": "Changes saved successfully.",
+            "create_ad": {
+                "input": {
+                    "title": "Ad's Title"
+                }
+            },
+            "ad_status": {
+                "label": "Status",
+                "active": "Active",
+                "reserved": "Reserved",
+                "sold": "Sold"
+            },
+            "delete_confirmation": {
+                "title": "Are you sure to delete this ad?",
+                "message": ""
+            },
+            "buttons": {
+                "back_to_list": "Back to list"
+            }
+        },
+        "error": {
+            "general": "A system error occurred, Please try again later.",
+            "input": {
+                "invalid_email": "Enter a valid email.",
+                "invalid_password": {
+                    "min_length": "At least 8 characters are required.",
+                    "has_number": "At least 1 number is required.",
+                    "has_uppercase": "At least 1 capital letter is required.",
+                    "has_special_char": "At least 1 special character is required."
+                },
+                "invalid_phone_number": "Enter a valid phone number.",
+                "invalid_image": {
+                    "max_size": "The file size should not exceed 1 MB.",
+                    "invalid_type": "Only image files are allowed."
+                }
+            },
+            "create_ad": {
+                "disable_not_loggined": "For submitting an ad, login to your account.",
+                "required_image": "Please choose at least one image for your ad."
+            },
+            "login": {
+                "not_verified": "For login, first verify your email."
+            },
+            "landing": {
+                "empty_product_list": "No ad submitted in the selected category.",
+                "error_get_product": "Error ocuured during getting product list."
+            },
+            "item_details": {
+                "not_found": "Item not found",
+                "disable_report_submiision": "For submitting a report, login to your account.",
+                "copy_phone_number_failed": "Failed to copy seller's phone number."
+            },
+            "profile_management": {
+                "save_failed": "Error ocurred during saving your changes",
+                "retrive_failed": "Error ocurred during retrive you profile information."
+            },
+            "report_history": {
+                "retrieve_failed": "Error ocurred during getting report history."
+            },
+            "server": {
+                "401": "You are not authorized to perform this action.",
+                "403": "Access denied",
+                "404": "The requested resource was not found.",
+                "409": "This email is already registered.",
+                "500": "An unexpected error occurred. Please try again later."
+            }
+        },
+        "success": {
+            "signup": "Registered successfully. Please verify your email.",
+            "code_verification": "Your email verified successfully.",
+            "login": "You are welcome!",
+            "forget_password": "A new password is sent to your email.",
+            "create_ad": "Ad created successfully.",
+            "report": "Report submitted successfully.",
+            "profile_management": "Changes saved successfully.",
+            "copy_phone_number": "Seller's phone mumber copied successfully."
+        }
+    },
+    "fa": {
+        "brand_name": "کالادو",
+        "currency": "تومان",
+        "general_inputs": {
+            "email": "ایمیل",
+            "password": "رمز عبور",
+            "password_repeat": "تکرار رمز عبور",
+            "phone_number": "شماره تلفن",
+            "first_name": "نام",
+            "last_name": "نام خانوادگی",
+            "price": "قیمت",
+            "date": "تاریخ",
+            "code": "کد تأیید",
+            "add_image": "افزودن عکس",
+            "description": "توضیحات",
+            "category": "دسته‌بندی",
+            "no_option": "بدون گزینه"
+        },
+        "navbar": {
+            "create_ad": "ثبت آگهی",
+            "login/signup": "ورود/ثبت‌نام",
+            "profile": "پروفایل کاربری",
+            "searchbar": "جستجوی کالا",
+            "logout": "خروج"
+        },
+        "category": {
+            "title": "دسته‌بندی‌ها",
+            "one": "املاک",
+            "two": "وسایل نقلیه",
+            "three": "خانه و آشپزخانه",
+            "four": "کالای دیجیتال",
+            "five": "سرگرمی",
+            "six": "لوازم شخصی",
+            "seven": "سایر موارد"
+        },
+        "filter": {
+            "title": "فیلترها",
+            "price": "قیمت",
+            "min_price": "حداقل",
+            "max_price": "حداکثر",
+            "ad_date": "قدمت آگهی",
+            "one_day": "یک روز",
+            "one_week": "یک هفته",
+            "one_month": "یک ماه",
+            "apply": "اعمال فیلتر"
+        },
+        "sort": {
+            "newest": "جدیدترین",
+            "oldest": "قدیمی‌ترین",
+            "most_expensive": "گران‌ترین",
+            "cheapest": "ارزان‌ترین"
+        },
+        "search": {
+            "option1": "لپ‌تاپ",
+            "option2": "خانه",
+            "option3": "موبایل",
+            "option4": "مبل",
+            "option5": "یخچال",
+            "option6": "کفش",
+            "option7": "هدفون",
+            "option8": "تلویزیون",
+            "option9": "ماشین",
+            "option10": "بازی"
+        },
+        "create_ad": {
+            "input": {
+                "title": "عنوان آگهی",
+                "price": "قیمت",
+                "category": "دسته‌بندی",
+                "description": "توضیحات",
+                "add_image": "افزودن عکس",
+                "production_year": "سال تولید",
+                "brand": "برند"
+            },
+            "default": {
+                "category": "انتخاب دسته‌بندی"
+            },
+            "choose_image": "انتخاب عکس",
+            "create_ad_btn": "ثبت آگهی"
+        },
+        "login_form": {
+            "login_btn": "ورود",
+            "signup_link": "ایجاد حساب جدید",
+            "forget_password_link": "فراموشی رمز عبور"
+        },
+        "forget_password_form": {
+            "enter_your_email": "لطفا ایمیل خود را برای بازیابی رمز عبور وارد نمایید.",
+            "forget_password_btn": "بازیابی رمز عبور"
+        },
+        "signup_form": {
+            "signup_btn": "ثبت‌نام",
+            "login_link": "در صورت داشتن حساب کاربری، کلیک کنید.",
+            "code_verification_link": "تایید کد ثبت‌نام",
+            "is_admin": "مدیر هستم",
+            "error": {
+                "password_mismatch": "رمز عبور‌ها با هم مطابقت ندارند."
+            }
+        },
+        "code_verification": {
+            "verify_btn": "بررسی",
+            "enter_code": "کد تأیید ارسال شده به ایمیل خود را وارد کنید."
+        },
+        "item_details": {
+            "price": "قیمت",
+            "city": "شهر",
+            "date": "تاریخ ثبت",
+            "description": "توضیحات",
+            "report_submission_btn": "ثبت تخلف",
+            "no_title": "بدون عنوان",
+            "no_brand": "برند نامشخص",
+            "no_date": "تاریخ ساخت نامشخص",
+            "no_description": "بدون توضیحات",
+            "no_seller_phone": "شماره تلفن فروشنده نامشخص"
+        },
+        "report": {
+            "input": {
+                "category": "نوع تخلف",
+                "description": "توضیحات"
+            },
+            "category": {
+                "one": "فحاشی",
+                "two": "محتوای نامناسب",
+                "three": "قیمت نامتناسب با بازار",
+                "four": "سایر موارد"
+            },
+            "choose_evidence": "شواهد/مدارک",
+            "user_management": {
+                "title": "مدیریت کاربران",
+                "user_info": "اطلاعات کاربر",
+                "email": "آدرس ایمیل",
+                "status": "وضعیت",
+                "allowed": "مجاز",
+                "blocked": "مسدود",
+                "confirmation_title": "تغییر وضعیت کاربر",
+                "confirmation_message": "آیا مطمئن هستید که می‌خواهید وضعیت {{email}} را به {{status}} تغییر دهید؟",
+                "confirm": "تأیید",
+                "cancel": "لغو"
+            },
+            "report_card": {
+                "history_title": "تاریخچه تخلفات",
+                "violation_type": "نوع تخلف",
+                "reporter_id": "شناسه گزارش دهنده",
+                "content_id": "شناسه محتوای گزارش شده",
+                "description": "توضیحات",
+                "submission_date": "زمان ثبت گزارش",
+                "evidence": "شواهد",
+                "actions": {
+                    "show_details": "جزئیات بیشتر",
+                    "go_to_ad": "مشاهده آگهی",
+                    "block_ad": "مسدود کردن آگهی",
+                    "block_user": "مسدود کردن کاربر",
+                    "back_to_list": "بازگشت به لیست"
+                },
+                "block_confirmation": {
+                    "title_usr": "آیا از مسدود کردن این کاربر اطمینان دارید؟",
+                    "title_ad": "آیا از مسدود کردن این آگهی اطمینان دارید؟"
+                },
+                "block_usr_success_message": "کاربر با موفقیت مسدود شد.",
+                "block_ad_success_message": "آگهی با موفقیت مسدود شد.",
+                "no_reports": "هیچ گزارشی یافت نشد."
+            },
+            "error": {
+                "missing_violation_type": "انتخاب نوع تخلف الزامی است.",
+                "missing_description_or_image": "لطفاً توضیحاتی ارائه دهید یا حداقل یک مدرک بارگذاری کنید.",
+                "submission_failed": "در ارسال گزارش خطایی رخ داد. لطفاً دوباره تلاش کنید."
+            },
+            "success": {
+                "report_submitted": "گزارش شما با موفقیت ثبت شد."
+            }
+        },
+        "dashboard": {
+            "user": {
+                "menu": {
+                    "one": "مدیریت پروفایل",
+                    "two": "مدیریت آگهی‌ها",
+                    "three": "تاریخچه‌ی تخلفات"
+                },
+                "profile_management": {
+                    "first_name": "نام",
+                    "last_name": "نام خانوادگی",
+                    "email": "ایمیل",
+                    "password": "رمز عبور",
+                    "phone_number": "شماره تلفن",
+                    "address": "محل سکونت",
+                    "save_changes_btn": "ذخیره تغییرات"
+                }
+            },
+            "admin": {
+                "menu": {
+                    "one": "مدیریت پروفایل",
+                    "two": "مدیریت کاربران",
+                    "three": "تاریخچه‌ی تخلفات"
+                }
+            }
+        },
+        "ad_list": {
+            "heading": "تاریخچه آگهی‌های ثبت‌شده",
+            "save_success": "تغییرات با موفقیت ذخیره شد.",
+            "create_ad": {
+                "input": {
+                    "title": "عنوان آگهی"
+                }
+            },
+            "ad_status": {
+                "label": "وضعیت",
+                "active": "فعال",
+                "reserved": "رزرو شده",
+                "sold": "فروخته شده"
+            },
+            "delete_confirmation": {
+                "title": "آیا از حذف این آگهی اطمینان دارید؟",
+                "message": ""
+            },
+            "buttons": {
+                "back_to_list": "بازگشت به لیست"
+            }
+        },
+        "error": {
+            "general": "خطای سیستمی رخ داده، لطفا دوباره امتحان نمایید.",
+            "input": {
+                "invalid_email": "لطفاً یک ایمیل معتبر وارد کنید.",
+                "invalid_password": {
+                    "min_length": "رمز عبور باید حداقل ۸ کاراکتر داشته باشد.",
+                    "has_number": "رمز عبور باید حداقل یک عدد داشته باشد.",
+                    "has_uppercase": "رمز عبور باید حداقل یک حرف بزرگ داشته باشد.",
+                    "has_special_char": "رمز عبور باید حداقل یک کاراکتر ویژه داشته باشد."
+                },
+                "invalid_phone_number": "لطفاً یک شماره تلفن معتبر وارد کنید.",
+                "invalid_image": {
+                    "max_size": "حجم فایل نباید بیشتر از 1 مگابایت باشد.",
+                    "invalid_type": "فقط فایل‌های تصویری مجاز هستند."
+                }
+            },
+            "create_ad": {
+                "disable_not_loggined": "برای ثبت آگهی ابتدا وارد حساب کاربری خود شوید.",
+                "required_image": "لطفا حداقل یک عکس برای آگهی خود انتخاب کنید."
+            },
+            "login": {
+                "not_verified": "برای ورود، ابتدا ایمیل خود را تایید کنید."
+            },
+            "landing": {
+                "empty_product_list": "در دسته‌بندی انتخاب‌شده هیچ آگهی‌ای ثبت نشده است.",
+                "error_get_product": "خطایی در گرفتن آگهی‌ها رخ داده است."
+            },
+            "item_details": {
+                "not_found": "کالای مورد نظر پیدا نشد.",
+                "disable_report_submiision": "برای ثبت تخلف ابتدا وارد حساب کاربری خود شوید.",
+                "copy_phone_number_failed": "خطایی در کپی کردن شماره تلفن خریدار رخ داد."
+            },
+            "profile_management": {
+                "save_failed": "خطایی در ذخیره‌ی تغییرات رخ داد.",
+                "retrive_failed": "خطایی در گرفتن اطلاعات پروفایل شما رخ داد."
+            },
+            "report_history": {
+                "retrieve_failed": "خطایی در گرفتن تاریخچه‌ی تخلفات رخ داد."
+            },
+            "server": {
+                "401": "شما مجوز این کار را ندارید.",
+                "403": "دسترسی رد شد.",
+                "404": "منبع مورد نظر پیدا نشد.",
+                "409": "این ایمیل در سیستم ثبت‌نام شده است.",
+                "500": "خطای سیستمی رخ داده، لطفا دوباره امتحان نمایید."
+            }
+        },
+        "success": {
+            "signup": "ثبت‌نام شما با موفقیت انجام شد. لطفا ایمیل خود را تایید نمایید.",
+            "code_verification": "ایمیل شما با موفقیت تایید شد.",
+            "login": "خوش آمدید!",
+            "forget_password": "رمز عبور جدیدی به ایمیل شما فرستاده شد.",
+            "create_ad": "آگهی شما با موفقیت ثبت شد.",
+            "report": "گزارش تخلف شما با موفقیت ثبت شد.",
+            "profile_management": "تغییرات شما با موفقیت ذخیره شد.",
+            "copy_phone_number": "شماره تلفن خریدار با موفقیت کپی شد."
+        }
+    }
+}
