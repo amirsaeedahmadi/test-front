@@ -82,24 +82,20 @@ export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     };
 
     const handleOpenReportSubmission = () => {
-        console.log("handleOpenReportSubmission")
-        console.log(token);
         if (token == null) {
-            toast.error(t("error.item_details.disable_report_submiision"));
+            toast.error(t("error.item_details.disable_report_submission"));
             return;
         }
         setReportSubmissionVisible(true);
     };
 
     const handleOpenProfilePage = () => {
-        console.log("handleOpenProfilePage");
         console.log(role);
-        console.log(token);
         setIsInProfile(true);
-        if (role === 'ADMIN') {
-            navigate('/admin-dashboard');
-        } else if (role === 'USER') {
+        if (role === 'USER') {
             navigate('/user-dashboard');
+        } else {
+            navigate('/admin-dashboard');
         }
     };
 

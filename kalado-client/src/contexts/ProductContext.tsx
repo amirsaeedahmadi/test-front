@@ -1,15 +1,17 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import { getProductsByCategory, getSingleProduct } from '../api/services/ProductService';
 import { getSearchByKeyword, getSearchByPriceRange, getSearchByMultipleFilters } from '../api/services/SearchService';
 import { TProductResponseType } from '../constants/apiTypes';
-
+import { OptionsComponent } from '../constants/options';
 
 interface ProductContextType {
+    selectedCategory: { value: string; title: string; };
     products: TProductResponseType[];
     singleProduct: TProductResponseType | null;
     loading: boolean;
     error: string;
-    fetchProductsByCategory: (category: string) => void;
+    setSelectedCategory: React.Dispatch<React.SetStateAction<{ value: string; title: string; }>>;
+    fetchProductsByCategory: () => void;
     fetchSingleProduct: (id: number) => Promise<TProductResponseType | null>;
     applyFilters: (minPrice: number | 0, maxPrice: number | 0, timeFilter: string | '') => void;
     searchProductsByKeyword: (keyword: string) => void;
@@ -19,20 +21,26 @@ interface ProductContextType {
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const categories = OptionsComponent().product_categories;
+    const [selectedCategory, setSelectedCategory] = useState({
+        value: categories[0].value,
+        title: categories[0].title
+    });
     const [products, setProducts] = useState<TProductResponseType[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
     const [singleProduct, setSingleProduct] = useState<TProductResponseType | null>(null);
 
-    const fetchProductsByCategory = async (category: string) => {
+    const fetchProductsByCategory = async () => {
         setLoading(true);
         setError('');
         try {
-            const response = await getProductsByCategory(category);
-            console.log(response);
+            console.log("fetchProductsByCategory");
+            const response = await getProductsByCategory(selectedCategory.value);
             const filteredProducts = response.filter((product: TProductResponseType) =>
                 product.status === 'ACTIVE' || product.status === 'RESERVED'
             );
+            console.log(response);
             setProducts(filteredProducts);
             console.log(filteredProducts);
         } catch (err) {
@@ -42,6 +50,13 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
         }
     };
 
+    // Fetch products when the component mounts or when the selected category changes
+    useEffect(() => {
+        console.log("QQQQQQQQQQQQ");
+        fetchProductsByCategory();
+    }, [selectedCategory]);
+
+    // Fetch single product by ID
     const fetchSingleProduct = async (id: number) => {
         setLoading(true);
         setError('');
@@ -50,12 +65,12 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
             setSingleProduct(response.data);
         } catch (err) {
             setError('Failed to fetch the product');
-            return null;
         } finally {
             setLoading(false);
         }
     };
 
+    // Apply filters to products
     const applyFilters = async (minPrice: number | 0, maxPrice: number | 0, timeFilter: string | '') => {
         setLoading(true);
         setError('');
@@ -69,6 +84,7 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
         }
     };
 
+    // Search products by keyword
     const searchProductsByKeyword = async (keyword: string) => {
         setLoading(true);
         setError('');
@@ -82,6 +98,7 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
         }
     };
 
+    // Search products by price range
     const searchProductsByPriceRange = async (minPrice: number | 0, maxPrice: number | 0) => {
         setLoading(true);
         setError('');
@@ -97,10 +114,12 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     return (
         <ProductContext.Provider value={{
+            selectedCategory,
             products,
             singleProduct,
             loading,
             error,
+            setSelectedCategory,
             fetchProductsByCategory,
             fetchSingleProduct,
             applyFilters,

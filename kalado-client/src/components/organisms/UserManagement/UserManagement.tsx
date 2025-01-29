@@ -1,77 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  Select,
-  MenuItem,
-  Grid,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Button,
+  Box, Typography, Card, CardContent, Select, MenuItem, Grid, Dialog, DialogActions,
+  DialogContent, DialogContentText, DialogTitle, Button
 } from "@mui/material";
-import { SelectChangeEvent } from "@mui/material";
+// import { blockUser } from '../../../api/services/UserService';
+import { TUserProfileResponse } from '../../../constants/apiTypes';
+import { useAuth } from '../../../contexts';
+import { toast } from 'react-toastify';
 
-type User = {
-  id: number;
-  email: string;
-  status: "Allowed" | "Blocked";
-};
+interface UserManageMentProps {
+  userDataList: TUserProfileResponse[] | null;
+}
 
-const generateMockData = (count: number): User[] => {
-  const mockData: User[] = [];
-  for (let i = 1; i <= count; i++) {
-    mockData.push({
-      id: i,
-      email: `user${i}@example.com`,
-      status: i % 2 === 0 ? "Allowed" : "Blocked",
-    });
-  }
-  return mockData;
-};
-
-const UserManagement: React.FC = () => {
+const UserManagement: React.FC<UserManageMentProps> = ({ userDataList }) => {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language === "fa";
-
-  const [users, setUsers] = useState<User[]>([]);
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [newStatus, setNewStatus] = useState<"Allowed" | "Blocked" | null>(null);
+  const { token } = useAuth();
+  const [users, setUsers] = useState<TUserProfileResponse[] | null>(userDataList);
+  const [selectedUser, setSelectedUser] = useState<TUserProfileResponse | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  // Mock API fetch
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const mockUsers = generateMockData(50);
-      setTimeout(() => {
-        setUsers(mockUsers);
-      }, 1000);
-    };
-    fetchUsers();
-  }, []);
-
-  const handleStatusChange = (id: number, status: "Allowed" | "Blocked") => {
-    setSelectedUser(users.find((user) => user.id === id) || null);
-    setNewStatus(status);
-    setIsDialogOpen(true);
+  const handleBlockUser = async (id: number) => {
+    // const response = await blockUser(id);
+    // if (response.isSuccess) {
+    //   toast(t("success.user_management.block_user"));
+    // } else {
+    //   toast(t('error.user_management.block_failed'));
+    // }
+    // // setSelectedUser(users.find((user) => user.id === id) || null);
+    // setIsDialogOpen(true);
   };
 
   const confirmStatusChange = () => {
-    if (selectedUser && newStatus) {
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          user.id === selectedUser.id ? { ...user, status: newStatus } : user
-        )
-      );
-    }
+    // if (selectedUser && newStatus) {
+    //   setUsers((prevUsers) =>
+    //     prevUsers.map((user) =>
+    //       user.id === selectedUser.id ? { ...user, status: newStatus } : user
+    //     )
+    //   );
+    // }
     setIsDialogOpen(false);
     setSelectedUser(null);
-    setNewStatus(null);
+    // setNewStatus(null);
   };
 
   return (
@@ -142,9 +113,9 @@ const UserManagement: React.FC = () => {
                     {t("report.user_management.status")}
                   </Typography>
                   <Select
-                    value={user.status}
+                    value={user.blocked}
                     onChange={(event) =>
-                      handleStatusChange(user.id, event.target.value as "Allowed" | "Blocked")
+                      handleBlockUser(user.id)
                     }
                     sx={{
                       minWidth: 150,
@@ -175,7 +146,7 @@ const UserManagement: React.FC = () => {
         <DialogTitle id="confirmation-dialog-title">
           {t("report.user_management.confirmation_title")}
         </DialogTitle>
-        <DialogContent>
+        {/* <DialogContent>
           <DialogContentText id="confirmation-dialog-description">
             {t("report.user_management.confirmation_message", {
               email: selectedUser?.email,
@@ -185,7 +156,7 @@ const UserManagement: React.FC = () => {
               ),
             })}
           </DialogContentText>
-        </DialogContent>
+        </DialogContent> */}
         <DialogActions>
           <Button onClick={() => setIsDialogOpen(false)} color="secondary">
             {t("report.user_management.cancel")}

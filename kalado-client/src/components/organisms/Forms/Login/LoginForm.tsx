@@ -4,9 +4,8 @@ import { EmailInput, PasswordInput, CustomButton, CustomLink, FormError } from '
 import { PopupBox } from '../../../molecules';
 import { loginUser } from '../../../../api/services/AuthService';
 import { toast } from 'react-toastify';
-import { useAuth } from '../../../../contexts/AuthContext';
-import { validateEmail } from '../../../../validators';
-import { useModalContext } from '../../../../contexts';
+import { useAuth, useModalContext } from '../../../../contexts';
+import { validateEmail, validatePassword } from '../../../../validators';
 
 
 const LoginForm: React.FC = () => {
@@ -17,6 +16,7 @@ const LoginForm: React.FC = () => {
     };
     const [formData, setFormData] = useState(initialFormData);
     const [error, setError] = useState<string>('');
+    const [areInputsValid, setAreInputsValid] = useState<boolean>(true);
     const { setToken, setRole } = useAuth();
     const { isLoginVisible, handleOpenSignup, handleClosePopups, handleOpenForgetPassword } = useModalContext();
 
@@ -24,8 +24,17 @@ const LoginForm: React.FC = () => {
         const emailValidationResult = validateEmail(formData.email, t);
         if (!emailValidationResult.valid) {
             setError(emailValidationResult.error);
+            setAreInputsValid(false);
             return false;
         }
+
+        // const passwordValidationResult = validatePassword(formData.password, t);
+        // if (!passwordValidationResult.valid) {
+        //     setError(emailValidationResult.error);
+        //     setAreInputsValid(false);
+        //     return false;
+        // }
+
         return true;
     };
 
@@ -40,7 +49,6 @@ const LoginForm: React.FC = () => {
 
         if (validateUserInputs()) {
             const response = await loginUser(formData.email.toLowerCase(), formData.password);
-            console.log(response);
             if (response.isSuccess) {
                 setToken(response.data.token);
                 setRole(response.data.role);
@@ -68,6 +76,7 @@ const LoginForm: React.FC = () => {
                 <CustomButton
                     text={t("login_form.login_btn")}
                     type="submit"
+                // disabled={!areInputsValid}
                 />
                 <CustomLink
                     to="/#"

@@ -8,7 +8,7 @@ import { validateEmail } from '../../../../validators';
 import { useModalContext } from '../../../../contexts';
 
 
-const ForgetPasswordForm: React.FC = () => {
+const ResetPasswordForm: React.FC = () => {
     const { t } = useTranslation();
     const initialFormData = { email: '' };
     const [formData, setFormData] = useState(initialFormData);
@@ -63,4 +63,4 @@ const ForgetPasswordForm: React.FC = () => {
     );
 };
 
-export default ForgetPasswordForm;
+export default ResetPasswordForm;

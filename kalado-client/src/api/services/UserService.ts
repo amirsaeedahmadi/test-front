@@ -8,8 +8,7 @@ export async function getProfile() {
         USER.GET_PROFILE,
         'GET',
         undefined,
-        {},
-        'multipart/form-data'
+        {}
     );
 }
 
@@ -22,3 +21,13 @@ export async function modifyProfile(profileData: ProfileData) {
         'multipart/form-data'
     );
 }
+
+export async function getAllUsers() {
+    return sendRequest<TUserProfileResponse[]>(
+        USER.ALL_USER,
+        'GET',
+        undefined,
+        {}
+    );
+}
+

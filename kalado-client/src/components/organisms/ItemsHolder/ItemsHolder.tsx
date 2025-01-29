@@ -8,14 +8,10 @@ import { useProductContext } from '../../../contexts/ProductContext';
 import NoProductImage from '../../../assets/images/no-product-found.png';
 
 
-interface ItemsHolderProps {
-    selectedCategoryTitle: string;
-}
-
-const ItemsHolder: React.FC<ItemsHolderProps> = ({ selectedCategoryTitle }) => {
+const ItemsHolder: React.FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const { products, loading, error } = useProductContext();
+    const { products, loading, error, selectedCategory } = useProductContext();
     const [sortOption, setSortOption] = useState<string>('newest');
 
     const sortedItems = () => {
@@ -112,7 +108,7 @@ const ItemsHolder: React.FC<ItemsHolderProps> = ({ selectedCategoryTitle }) => {
                     setSortOption={(e) => setSortOption(e.target.value as string)}
                 />
                 <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', mb: 5 }}>
-                    {selectedCategoryTitle}
+                    {selectedCategory.title}
                 </Typography>
                 <Box sx={{
                     display: 'flex',

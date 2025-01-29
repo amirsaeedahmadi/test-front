@@ -1,4 +1,4 @@
-import { ReportStatus, User, UserType, ViolationType } from './types'
+import { ReportStatus, UserType, ViolationType } from './types'
 
 
 // Login
@@ -68,7 +68,7 @@ export interface ProductData {
     };
     category: string;
     images?: File[] | null;
-    productionYear?: Date | null;
+    productionYear?: number | null;
     brand?: string | null;
     // sellerId: number;
 }
@@ -76,7 +76,7 @@ export interface ProductData {
 export type TProductResponseType = {
     id: number;
     title: string;
-    createdAt: string;
+    createdAt: number;
     imageUrls?: string[];
     price: {
         amount: number,
@@ -86,7 +86,7 @@ export type TProductResponseType = {
     sellerPhoneNumber: string;
     sellerId: number;
     brand?: string;
-    productionYear?: string;
+    productionYear?: number;
     status: string;
 };
 
@@ -124,20 +124,27 @@ export interface TReportResponseType {
 
 // User
 export interface ProfileData {
+    profileId: number;
     firstName: string;
     lastName: string;
     phoneNumber: string;
     address: string;
+    currentPassword: string;
+    newPassword: string;
+    confirmPassword: string;
 }
 
 export type TUserProfileResponse = {
     id: number;
+    username: string;
     firstName: string;
     lastName: string;
-    email: string;
-    password: string;
+    // email: string;
+    // password: string;
     address: string | null;
     phoneNumber: string;
+    profileImageUrl: string | null;
+    blocked: boolean;
 };
 
 // Search

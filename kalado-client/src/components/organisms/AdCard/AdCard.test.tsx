@@ -50,7 +50,7 @@ describe('AdCard Component', () => {
     const statusDropdown = screen.getByRole('combobox');
     fireEvent.mouseDown(statusDropdown);
 
-    const reservedOption = screen.getByText(i18n.t('ad_list.ad_status.reserved'));
+    const reservedOption = screen.getByText(i18n.t('ad_list.ad_status.RESERVED'));
     fireEvent.click(reservedOption);
 
     expect(defaultProps.onStatusChange).toHaveBeenCalledWith('reserved');

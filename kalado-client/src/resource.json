@@ -71,7 +71,8 @@
                 "description": "Description",
                 "add_image": "Add Image",
                 "production_year": "Production Year",
-                "brand": "Brand"
+                "brand": "Brand",
+                "undefined": "Undefined"
             },
             "default": {
                 "category": "Select Category"
@@ -183,7 +184,8 @@
                     "password": "Password",
                     "phone_number": "Phone Number",
                     "address": "Address",
-                    "save_changes_btn": "Save Changes"
+                    "save_changes_btn": "Save Changes",
+                    "enter_new_password": "Enter new password"
                 }
             },
             "admin": {
@@ -203,10 +205,11 @@
                 }
             },
             "ad_status": {
-                "label": "Status",
-                "active": "Active",
-                "reserved": "Reserved",
-                "sold": "Sold"
+                "label": "status",
+                "ACTIVE": "active",
+                "RESERVED": "reserved",
+                "SOLD": "sold",
+                "DELETED": "deleted"
             },
             "delete_confirmation": {
                 "title": "Are you sure to delete this ad?",
@@ -214,6 +217,10 @@
             },
             "buttons": {
                 "back_to_list": "Back to list"
+            },
+            "access_level": {
+                "admin": "Admin",
+                "user": "User"
             }
         },
         "error": {
@@ -245,15 +252,23 @@
             },
             "item_details": {
                 "not_found": "Item not found",
-                "disable_report_submiision": "For submitting a report, login to your account.",
-                "copy_phone_number_failed": "Failed to copy seller's phone number."
+                "disable_report_submission": "For submitting a report, login to your account.",
+                "copy_phone_number_failed": "Failed to copy seller's phone number.",
+                "login_to_copy_phone_number": "To see sellre's phone number, login to your account."
             },
             "profile_management": {
                 "save_failed": "Error ocurred during saving your changes",
-                "retrive_failed": "Error ocurred during retrive you profile information."
+                "retrive_failed": "Error ocurred during retriving you profile information."
+            },
+            "user_management": {
+                "retrive_failed": "Error ocurred during retriving user's list.",
+                "block_failed": "Error ocurred during blocking the user."
+            },
+            "ad_management": {
+                "retrieve_failed": "Error ocurred during retriving your ad's list."
             },
             "report_history": {
-                "retrieve_failed": "Error ocurred during getting report history."
+                "retrieve_failed": "Error ocurred during retriving your reports."
             },
             "server": {
                 "401": "You are not authorized to perform this action.",
@@ -271,7 +286,11 @@
             "create_ad": "Ad created successfully.",
             "report": "Report submitted successfully.",
             "profile_management": "Changes saved successfully.",
-            "copy_phone_number": "Seller's phone mumber copied successfully."
+            "copy_phone_number": "Seller's phone mumber copied successfully.",
+            "user_management": {
+                "block_user": "User banned successfully.",
+                "admin_user": "User become admin successfully."
+            }
         }
     },
     "fa": {
@@ -346,7 +365,8 @@
                 "description": "توضیحات",
                 "add_image": "افزودن عکس",
                 "production_year": "سال تولید",
-                "brand": "برند"
+                "brand": "برند",
+                "undefined": "نامشخص"
             },
             "default": {
                 "category": "انتخاب دسته‌بندی"
@@ -458,7 +478,8 @@
                     "password": "رمز عبور",
                     "phone_number": "شماره تلفن",
                     "address": "محل سکونت",
-                    "save_changes_btn": "ذخیره تغییرات"
+                    "save_changes_btn": "ذخیره تغییرات",
+                    "enter_new_password": "رمز عبور جدید خود را وارد نمایید"
                 }
             },
             "admin": {
@@ -479,9 +500,10 @@
             },
             "ad_status": {
                 "label": "وضعیت",
-                "active": "فعال",
-                "reserved": "رزرو شده",
-                "sold": "فروخته شده"
+                "ACTIVE": "فعال",
+                "RESERVED": "رزرو شده",
+                "SOLD": "فروخته شده",
+                "DELETED": "حذف شده"
             },
             "delete_confirmation": {
                 "title": "آیا از حذف این آگهی اطمینان دارید؟",
@@ -489,6 +511,10 @@
             },
             "buttons": {
                 "back_to_list": "بازگشت به لیست"
+            },
+            "access_level": {
+                "admin": "ادمین",
+                "user": "کاربر"
             }
         },
         "error": {
@@ -520,12 +546,20 @@
             },
             "item_details": {
                 "not_found": "کالای مورد نظر پیدا نشد.",
-                "disable_report_submiision": "برای ثبت تخلف ابتدا وارد حساب کاربری خود شوید.",
-                "copy_phone_number_failed": "خطایی در کپی کردن شماره تلفن خریدار رخ داد."
+                "disable_report_submission": "برای ثبت تخلف ابتدا وارد حساب کاربری خود شوید.",
+                "copy_phone_number_failed": "خطایی در کپی کردن شماره تلفن خریدار رخ داد.",
+                "login_to_copy_phone_number": "برای مشاهده‌ی شماره تماس خریدار، وارد حساب کاربری خود شوید."
             },
             "profile_management": {
                 "save_failed": "خطایی در ذخیره‌ی تغییرات رخ داد.",
                 "retrive_failed": "خطایی در گرفتن اطلاعات پروفایل شما رخ داد."
+            },
+            "user_management": {
+                "retrive_failed": "خطایی در گرفتن لیست کاربران رخ داد.",
+                "block_failed": "خطایی در مسدودسازی کاربر رخ داد."
+            },
+            "ad_management": {
+                "retrieve_failed": "خطایی در گرفتن لیست آگهی‌هایتان رخ داد."
             },
             "report_history": {
                 "retrieve_failed": "خطایی در گرفتن تاریخچه‌ی تخلفات رخ داد."
@@ -546,7 +580,11 @@
             "create_ad": "آگهی شما با موفقیت ثبت شد.",
             "report": "گزارش تخلف شما با موفقیت ثبت شد.",
             "profile_management": "تغییرات شما با موفقیت ذخیره شد.",
-            "copy_phone_number": "شماره تلفن خریدار با موفقیت کپی شد."
+            "copy_phone_number": "شماره تلفن خریدار با موفقیت کپی شد.",
+            "user_management": {
+                "block_user": "کاربر با موفقیت مسدود شد.",
+                "admin_user": "کاربر با موفقیت ادمین شد."
+            }
         }
     }
 }

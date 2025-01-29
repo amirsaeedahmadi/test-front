@@ -8,6 +8,8 @@ export async function loginUser(email: string, password: string) {
         AUTH.LOGIN,
         'POST',
         { email, password },
+        {},
+        'application/json'
     );
 }
 
@@ -16,13 +18,18 @@ export async function signupUser(userData: UserData) {
         AUTH.REGISTER,
         'POST',
         userData,
+        {},
+        'application/json'
     );
 }
 
 export async function verifyCode(code: string) {
     return sendRequest(
         `${AUTH.VERIFY}?token=${code}`,
-        'POST'
+        'POST',
+        null,
+        {},
+        'application/json'
     );
 }
 
@@ -31,5 +38,7 @@ export async function resetPassword(email: string) {
         AUTH.RESETPASSWORD,
         'POST',
         email,
+        {},
+        'application/json'
     );
 }

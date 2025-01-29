@@ -34,6 +34,7 @@ type AdCardState = {
   isEditing: boolean;
   newTitle: string;
   isDeleteDialogOpen: boolean;
+  accessLevel: string;
 };
 
 class AdCard extends Component<AdCardProps, AdCardState> {
@@ -43,6 +44,7 @@ class AdCard extends Component<AdCardProps, AdCardState> {
       isEditing: false,
       newTitle: props.title,
       isDeleteDialogOpen: false,
+      accessLevel: 'user',
     };
   }
 
@@ -64,7 +66,7 @@ class AdCard extends Component<AdCardProps, AdCardState> {
 
   render() {
     const { title, status, onStatusChange, onEdit, t } = this.props;
-    const { isEditing, isDeleteDialogOpen } = this.state;
+    const { isEditing, isDeleteDialogOpen, accessLevel } = this.state;
 
     return (
       <>
@@ -105,22 +107,22 @@ class AdCard extends Component<AdCardProps, AdCardState> {
             )}
           </Box>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', flex: 1, gap: '30px' }}>
+            {/* Status Dropdown */}
             <Select
               value={status}
               onChange={onStatusChange}
               displayEmpty
-              sx={{ minWidth: '180px', fontSize: '1rem' }}
+              sx={{ minWidth: '150px', fontSize: '1rem' }}
               inputProps={{
                 'aria-label': t('ad_list.ad_status.dropdown'),
               }}
             >
-              <MenuItem value="active">{t('ad_list.ad_status.active')}</MenuItem>
-              <MenuItem value="reserved">{t('ad_list.ad_status.reserved')}</MenuItem>
-              <MenuItem value="sold">{t('ad_list.ad_status.sold')}</MenuItem>
+              <MenuItem value="active">{t('ad_list.ad_status.ACTIVE')}</MenuItem>
+              <MenuItem value="reserved">{t('ad_list.ad_status.RESERVED')}</MenuItem>
+              <MenuItem value="sold">{t('ad_list.ad_status.SOLD')}</MenuItem>
             </Select>
-          </Box>
-
+            </Box>
           <Box sx={{ display: 'flex', gap: '10px' }}>
             <IconButton onClick={onEdit}>
               <EditIcon />

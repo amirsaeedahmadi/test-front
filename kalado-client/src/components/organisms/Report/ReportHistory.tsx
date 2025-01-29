@@ -1,39 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, Grid, Card, Button } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { useTranslation } from 'react-i18next';
 import ReportDetails from './ReportDetails';
-import { TReportResponseType } from '../../../utils/apiTypes';
-import { getAllReports } from '../../../api/services/ReportService';
+import { TReportResponseType } from '../../../constants/apiTypes';
 import { useAuth } from '../../../contexts';
 import { FormError } from '../../atoms';
 
-const ReportHistory: React.FC = () => {
+interface ReportHistoryProps {
+    reportsList: TReportResponseType[] | null;
+}
+
+const ReportHistory: React.FC<ReportHistoryProps> = ({ reportsList }) => {
     const { t, i18n } = useTranslation();
     const isRtl = i18n.language === 'fa';
     const [selectedReport, setSelectedReport] = useState<TReportResponseType | null>(null);
-    const [reports, setReports] = useState<TReportResponseType[]>([]);
+    const [reports, setReports] = useState<TReportResponseType[] | null>(reportsList);
     const [error, setError] = useState<string>('');
     const { token } = useAuth();
-
-    useEffect(() => {
-        if (token) {
-            fetchReports();
-        }
-    }, [token]);
-
-    const fetchReports = async () => {
-        try {
-            const response = await getAllReports(token);
-            if (response.isSuccess && response.data) {
-                setReports(response.data);
-            } else {
-                setError(t('error.report_history.retrieve_failed'));
-            }
-        } catch {
-            setError(t('error.report_history.retrieve_failed'));
-        }
-    };
 
     const handleShowDetails = (report: TReportResponseType) => {
         setSelectedReport(report);

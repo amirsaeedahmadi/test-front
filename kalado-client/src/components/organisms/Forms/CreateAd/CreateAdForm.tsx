@@ -37,9 +37,12 @@ const CreateAdForm: React.FC = () => {
     };
 
     const handleYearChange = (date: Date | null) => {
+        console.log(date.getFullYear())
         setFormData(prevData => ({
             ...prevData,
             productionYear: date
+
+
         }));
     };
 
@@ -75,24 +78,17 @@ const CreateAdForm: React.FC = () => {
             return;
         }
 
-        try {
-            console.log("Create Ad API call");
-            console.log(formData.category);
-            console.log(token);
-            console.log(formData);
-            console.log(images);
+        console.log("Create Ad API call");
+        console.log(formData.category);
+        console.log(formData);
+        console.log(images);
 
-            const response = await createProductWithImages(formData, images);
-
-            console.log(response);
-            if (response.isSuccess) {
-                handleClose();
-                toast(t("success.create_ad"));
-            } else {
-                setError(response.message);
-            }
-        } catch (error) {
-            setError('An error occurred while creating the product');
+        const response = await createProductWithImages(formData, images);
+        if (response.isSuccess) {
+            handleClose();
+            toast(t("success.create_ad"));
+        } else {
+            setError(response.message);
         }
     };
 

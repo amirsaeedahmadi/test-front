@@ -14,6 +14,7 @@ interface CustomButtonProps extends Omit<MuiButtonProps, 'color'> {
     margin?: string;
     type?: 'button' | 'submit' | 'reset';
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    fullWidth?: boolean;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -30,15 +31,15 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     type = 'button',
     onClick,
     disabled,
+    fullWidth = false,
     ...props
 }) => {
-
     return (
         <Box display="flex" justifyContent="center" alignItems="center">
             <MuiButton
                 sx={{
                     borderRadius: borderRadius || (shape === 'square' ? '0px' : '30px'),
-                    width: 'auto',
+                    width: fullWidth ? '100%' : 'auto',
                     backgroundColor: backgroundColor,
                     padding: type === 'submit' ? '5px 30px' : padding,
                     margin: margin,

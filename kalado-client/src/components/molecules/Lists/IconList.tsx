@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Typography, List, ListItemIcon, ListItemText, ListItemButton } from '@mui/material';
 
 interface IconListProps {
-    items: {
+    categories: {
         value: string;
         title: string;
         icon: React.ReactNode;
     }[];
-    onSelect: (title: string) => void;
+    onSelectCategory: (title: string) => void;
+    selectedCategory: string;
     title?: string;
-    initialSelect: string;
 }
 
-const IconList: React.FC<IconListProps> = ({ items, onSelect, title, initialSelect }) => {
+const IconList: React.FC<IconListProps> = ({ categories, onSelectCategory, selectedCategory, title }) => {
     const { i18n } = useTranslation();
-    const [selectedCategory, setSelectedCategory] = useState<string>(initialSelect);
 
     const handleCategoryClick = (categoryTitle: string) => {
-        setSelectedCategory(categoryTitle);
-        onSelect(categoryTitle);
+        onSelectCategory(categoryTitle);
     };
 
     return (
@@ -28,7 +26,7 @@ const IconList: React.FC<IconListProps> = ({ items, onSelect, title, initialSele
                 {title}
             </Typography>
             <List>
-                {items.map((item) => (
+                {categories.map((item) => (
                     <ListItemButton
                         key={item.title}
                         onClick={() => handleCategoryClick(item.value)}

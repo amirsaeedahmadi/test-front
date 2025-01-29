@@ -1,45 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Box, Avatar, CircularProgress, IconButton } from '@mui/material';
-import { CustomButton, NameInput, PhoneNumberInput, PasswordInput, FormError } from '../../atoms';
+import { Box, Avatar, IconButton } from '@mui/material';
+import { CustomButton, NameInput, PhoneNumberInput, PasswordInput } from '../../atoms';
 import EditIcon from '@mui/icons-material/Edit';
 import { toast } from 'react-toastify';
-import { useAuth } from '../../../contexts';
 import defaultImage from '../../../assets/images/no-image.png';
-import { getProfile, modifyProfile } from '../../../api/services/UserService';
-import { TUserProfileResponse } from '../../../constants/apiTypes'
+import { modifyProfile } from '../../../api/services/UserService';
+import { TUserProfileResponse } from '../../../constants/apiTypes';
 
+interface ProfileManagementProps {
+    userData: TUserProfileResponse | null;
+}
 
-const ProfileManagement = () => {
+const ProfileManagement: React.FC<ProfileManagementProps> = ({ userData }) => {
     const { t } = useTranslation();
-    const [userData, setUserData] = useState<TUserProfileResponse | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [modifiedUserData, setModifiedUserData] = useState<TUserProfileResponse | null>(userData);
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const { token } = useAuth();
-
-    useEffect(() => {
-        fetchUserData();
-    }, [token]);
-
-    const fetchUserData = async () => {
-        try {
-            setLoading(true);
-            const response = await getProfile();
-            console.log(response);
-            setUserData(response.data as TUserProfileResponse);
-            console.log(userData);
-        } catch (err) {
-            setError(t('error.profile_management.retrieve_failed'));
-        } finally {
-            setLoading(false);
-        }
-    };
-
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setUserData(prevData => ({
+        setModifiedUserData(prevData => ({
             ...prevData!,
             [name]: value,
         }));
@@ -48,7 +28,7 @@ const ProfileManagement = () => {
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
-            setUserData(prevData => ({
+            setModifiedUserData(prevData => ({
                 ...prevData!,
                 profileImage: file
             }));
@@ -56,41 +36,31 @@ const ProfileManagement = () => {
     };
 
     const handleSaveChanges = async () => {
-        if (!userData) return;
+        if (!modifiedUserData) return;
 
-        try {
-            console.log('Update Profile API call', userData);
-            const response = await modifyProfile(userData);
-            console.log(response);
-    
-            if (response.isSuccess) {
-                toast(t('success.profile_management'));
-            } else {
-                toast(t('error.profile_management.save_failed'));
-            }
-        } catch (err) {
+        console.log('Update Profile API call', modifiedUserData);
+        const response = await modifyProfile(modifiedUserData);
+        console.log(response);
+
+        if (response.isSuccess) {
+            toast(t('success.profile_management'));
+        } else {
             toast(t('error.profile_management.save_failed'));
         }
     };
-    
-
 
     return (
         <Box sx={{ maxWidth: 600, margin: '90px auto', padding: 3 }}>
-            {
-                (loading) && (<CircularProgress />)
-            }
 
-            {error && (
-                <FormError message={error} />
+            {!userData && (
+                <p></p>
             )}
 
             {userData && (
                 <>
                     <Box sx={{ position: 'relative', width: 100, height: 100, margin: '20px auto' }}>
                         <Avatar
-                            // src={userData.profileImage ? URL.createObjectURL(userData.profileImage) : defaultImage}
-                            src={defaultImage}
+                            src={userData.profileImageUrl ? userData.profileImageUrl : defaultImage}
                             sx={{ width: 100, height: 100 }}
                         />
                         <IconButton
@@ -123,7 +93,8 @@ const ProfileManagement = () => {
                         onChange={handleInputChange}
                     />
                     <PasswordInput
-                        value={userData.password || ''}
+                        value={''}
+                        placeholder={t('dashboard.user.profile_management.enter_new_password')}
                         onChange={handleInputChange}
                         isValidatorActive={true}
                     />

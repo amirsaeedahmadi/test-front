@@ -4,17 +4,33 @@ import { ImageUpload } from '../../atoms';
 
 interface ImageUploadBoxProps {
     onUpload: (files: File[]) => void;
-    title: string;
+    title?: string;
     numberOfImages?: number;
 }
 
 const ImageUploadBox: React.FC<ImageUploadBoxProps> = ({ onUpload, title, numberOfImages = 3 }) => {
     return (
-        <Box>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+            }}
+        >
             <Typography sx={{ marginBottom: "10px" }}>{title}</Typography>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center'
+                }}
+            >
                 {Array.from({ length: numberOfImages }, (_, index) => (
-                    <ImageUpload key={index} onUpload={onUpload} />
+                    <Box key={index} sx={{ margin: '10px 10px' }}>
+                        <ImageUpload onUpload={onUpload} />
+                    </Box>
                 ))}
             </Box>
         </Box>

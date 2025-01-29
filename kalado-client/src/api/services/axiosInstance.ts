@@ -26,14 +26,9 @@ const axiosInstance: AxiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
     (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
         const token = localStorage.getItem('token');
-        console.log('Request interceptor');
-        console.log(token);
         if (token && config.headers) {
             config.headers['Authorization'] = `${token}`;
         }
-        // if (config.headers['Content-Type']) {
-        //     config.headers['Content-Type'] = 'application/json';
-        // }
         console.log(config);
         return config;
     },
@@ -44,6 +39,7 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
     (response: AxiosResponse) => {
+        console.log('Response: ', response);
         return { ...response, isSuccess: true };
     },
     (error: any) => {
@@ -79,7 +75,7 @@ export const sendRequest = async <T>(
         console.log('Sending request: ', url, method, data);
         const headers = {
             ...config.headers,
-            'Content-Type': contentType || 'application/json'
+            ...(contentType ? { 'Content-Type': contentType } : {})
         };
         const response: AxiosResponse<T> & { isSuccess: boolean } = await axiosInstance({
             method,

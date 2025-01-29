@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Box, Button, IconButton } from '@mui/material';
+import { Box, Button, IconButton, useTheme } from '@mui/material';
+import FormError from '../Errors/FormError';
 import { FaTrash } from 'react-icons/fa';
+
 
 interface ImageUploadProps {
     onUpload: (files: File[]) => void;
@@ -9,9 +11,10 @@ interface ImageUploadProps {
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
     const { t } = useTranslation();
+    const theme = useTheme();
     const [selectedImages, setSelectedImages] = useState<File[]>([]);
     const [imagePreviews, setImagePreviews] = useState<string[]>([]);
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,9 +34,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
             });
 
             if (errorFound) {
-                setErrorMessage(t("error.input.invalid_image.max_size"));
+                setError(t("error.input.invalid_image.max_size"));
             } else {
-                setErrorMessage(null);
+                setError(null);
             }
 
             setSelectedImages(newImages);
@@ -42,7 +45,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
         }
     };
 
-    const handleRemoveImage = (index: number) => {
+    const handleRemoveImage = (index: number, event: React.MouseEvent) => {
+        event.stopPropagation();
         const updatedImages = selectedImages.filter((_, i) => i !== index);
         const updatedPreviews = imagePreviews.filter((_, i) => i !== index);
         setSelectedImages(updatedImages);
@@ -51,9 +55,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
     };
 
     const handleBrowseClick = () => {
-        if (fileInputRef.current) {
-            fileInputRef.current.click();
-        }
+        fileInputRef.current?.click();
     };
 
     return (
@@ -81,8 +83,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
                     <Button
                         variant="outlined"
                         sx={{
-                            color: 'white',
-                            border: '2px dashed white',
+                            color: theme.palette.text.primary,
+                            border: '2px dashed',
                             borderRadius: 2
                         }}>
                         {t("general_inputs.add_image")}
@@ -92,7 +94,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
                         <Box key={index} className="image-preview" sx={{ position: 'relative', width: '100%', height: '100%' }}>
                             <img src={preview} alt={`Preview ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             <IconButton
-                                onClick={() => handleRemoveImage(index)}
+                                onClick={(event) => handleRemoveImage(index, event)}
                                 sx={{
                                     position: 'absolute',
                                     top: 5,
@@ -109,11 +111,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
                     ))
                 )}
             </Box>
-            {errorMessage && (
-                <Box sx={{ mt: 1, color: 'red', textAlign: 'right' }}>
-                    {errorMessage}
-                </Box>
-            )}
+            <FormError message={error} />
         </Box>
     );
 };

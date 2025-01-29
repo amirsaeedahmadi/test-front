@@ -2,6 +2,8 @@ export { default as ImageUploadBox } from './Boxes/ImageUploadBox';
 export { default as PopupBox } from './Boxes/PopupBox';
 export { default as ProductListBox } from './Boxes/ProductListBox';
 
+export { default as NavBarButtons } from './ButtonsGroup/NavBarButtons';
+
 export { default as SearchBar } from './SearchBar/SearchBar';
 export { default as SideBar } from './Boxes/SideBarBox';
 

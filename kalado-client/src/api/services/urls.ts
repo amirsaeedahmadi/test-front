@@ -13,8 +13,10 @@ export const AUTH = {
 export const USER = {
     GET: '/user',
     PUT: '/user',
-    GET_PROFILE: '/user/getProfile',
+    GET_PROFILE: '/user/profile',
     MODIFY_PROFILE: '/user/modifyProfile',
+    BLOCK: '/user/user/block',
+    ALL_USER: '/user/all'
 };
 
 export const PRODUCT = {
@@ -23,6 +25,7 @@ export const PRODUCT = {
     DELETE: (productId: number) => `/product/delete/${productId}`,
     UPDATE_STATUS: (productId: number) => `/product/status/${productId}`,
     GET_BY_SELLER: '/product/seller',
+    GET_BY_SELLER_ID: (sellerId: number) => `/product/seller/${sellerId}`,
     GET_BY_CATEGORY: (category: string) => `/product/category/${category}`,
     GET_SINGLE: (productId: number) => `/product/${productId}`,
 };
@@ -50,4 +53,5 @@ export const REPORT = {
     GET_ALL_REPORTS: `/reports/admin/all`,
     GET_REPORT_STATISTICS: (startDate: string, endDate: string) =>
         `/reports/admin/statistics?startDate=${startDate}&endDate=${endDate}`,
+    GET_REPORT_TO_USER_ID: (userId: number) => `/reports/my-reports/${userId}`,
 };

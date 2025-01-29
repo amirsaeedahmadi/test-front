@@ -3,7 +3,6 @@ import { Box, useTheme, useMediaQuery } from '@mui/material';
 import { Backdrop as MuiBackdrop } from '@mui/material';
 import { Logo, CustomButton } from '../../atoms';
 import { FaTimes } from 'react-icons/fa';
-import { useModalContext } from '../../../contexts';
 
 interface PopupBoxProps {
     open: boolean;
@@ -31,8 +30,7 @@ const PopupBox: React.FC<PopupBoxProps> = ({ open, children, onClose }) => {
             }}
         >
             <Box sx={{
-                width: isMobile ? "90vw" : "25vw",
-                maxWidth: "500px",
+                width: isMobile ? "90vw" : "450px",
                 padding: isMobile ? "10px 20px" : "25px 20px",
                 position: 'fixed',
                 top: '50%',
