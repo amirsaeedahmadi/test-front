@@ -88,6 +88,7 @@ export type TProductResponseType = {
     brand?: string;
     productionYear?: number;
     status: string;
+    category: string;
 };
 
 
@@ -105,6 +106,7 @@ export interface ReportStatusUpdateData {
     blockUser: boolean;
     blockReason: string | null;
     blockProduct: boolean;
+    reportedContentId: number;
 }
 
 export interface TReportResponseType {
@@ -124,13 +126,14 @@ export interface TReportResponseType {
 
 // User
 export interface ProfileData {
-    profileId: number;
+    id: number;
     firstName: string;
     lastName: string;
     phoneNumber: string;
-    address: string;
+    // profileImage: string | null;
+    address: string | null;
     currentPassword: string;
-    newPassword: string;
+    newPassword: string | null;
     confirmPassword: string;
 }
 
@@ -139,8 +142,6 @@ export type TUserProfileResponse = {
     username: string;
     firstName: string;
     lastName: string;
-    // email: string;
-    // password: string;
     address: string | null;
     phoneNumber: string;
     profileImageUrl: string | null;

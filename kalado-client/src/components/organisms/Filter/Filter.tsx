@@ -11,23 +11,35 @@ const Filter: React.FC = () => {
   const { date_filter_options } = OptionsComponent();
   const { applyFilters } = useProductContext();
   const [date, setDate] = useState<string | ''>('');
-  const [minPrice, setMinPrice] = useState<number>(0);
-  const [maxPrice, setMaxPrice] = useState<number>(0);
+  const [minPrice, setMinPrice] = useState<number | null>(null);
+  const [maxPrice, setMaxPrice] = useState<number | null>(null);
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (parseFloat(value) < 0) {
-      e.target.value = '0';
-    }
-    if (e.target.name === 'minPrice') {
-      setMinPrice(value ? parseFloat(value) : 0);
-    } else if (e.target.name === 'maxPrice') {
-      setMaxPrice(value ? parseFloat(value) : 0);
+    let value = e.target.value.trim();
+
+    const persianToEnglish = (str: string) =>
+      str.replace(/[٠-٩]/g, (d) => (d.charCodeAt(0) - 1632).toString()) // Persian digits
+         .replace(/[۰-۹]/g, (d) => (d.charCodeAt(0) - 1776).toString()); // Arabic digits
+
+    value = persianToEnglish(value);
+
+    if (/^\d*$/.test(value)) {
+      const numericValue = value ? parseFloat(value) : null;
+
+      if (e.target.name === 'minPrice') {
+        setMinPrice(numericValue !== null && numericValue < 0 ? 0 : numericValue);
+      } else if (e.target.name === 'maxPrice') {
+        setMaxPrice(numericValue !== null && numericValue < 0 ? 0 : numericValue);
+      }
     }
   };
 
   const handleApplyFilters = () => {
-    applyFilters(minPrice, maxPrice, date);
+    applyFilters(
+      minPrice !== null ? minPrice : undefined, 
+      maxPrice !== null ? maxPrice : undefined, 
+      date
+    );
   };
 
   return (

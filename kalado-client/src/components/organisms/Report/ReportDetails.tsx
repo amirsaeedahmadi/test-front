@@ -1,29 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
   Grid,
-  Button,
   Dialog,
   DialogContent,
   IconButton,
   Card,
 } from '@mui/material';
 import { Download as DownloadIcon, Check as CheckIcon, Close as CloseIcon } from '@mui/icons-material';
+import { CustomButton } from '../../atoms';
+import { ConfirmationDialog } from '../../../components/molecules';
+import { ItemDetailsPopup } from '../../organisms';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
-import CustomToast from '../../molecules/CustomToast/CustomToast';
-import {ReportStatusUpdateData} from '../../../utils/apiTypes';
+import { ReportStatusUpdateData, TReportResponseType } from '../../../constants/apiTypes';
+import { useModalContext, useProductContext } from '../../../contexts';
 
 interface ReportDetailsProps {
-  report: {
-    violationType: string;
-    description: string;
-    image: string[];
-    contentId: number;
-  };
+  report: TReportResponseType;
   onBackToList: () => void;
   onBlockContent: (contentId: number) => void;
 }
@@ -34,6 +30,13 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, onBackToList, onB
   const [openImage, setOpenImage] = useState<string | null>(null);
   const [isBlockDialogOpen, setIsBlockDialogOpen] = useState(false);
   const [isBlockAdDialogOpen, setIsBlockAdDialogOpen] = useState(false);
+  const { isProductDetailsOpen, handleProductDetailsClick } = useModalContext();
+  const { singleProduct, loading, error, fetchSingleProduct } = useProductContext();
+
+  useEffect(() => {
+    if (!report.reportedContentId) return;
+    fetchSingleProduct(Number(report.reportedContentId));
+  }, [report.reportedContentId]);
 
   const handleOpenImage = (image: string) => {
     setOpenImage(image);
@@ -45,17 +48,8 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, onBackToList, onB
 
   const handleBlockConfirm = () => {
     if (report) {
-      onBlockContent(report.contentId);
-
-      // Display success toast
-      toast.success(t('report.report_card.block_usr_success_message'), {
-        position: isRtl ? 'bottom-right' : 'bottom-left',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      onBlockContent(report.reportedContentId);
+      toast(t('report.report_card.block_usr_success_message'));
     }
     setIsBlockDialogOpen(false);
   };
@@ -63,21 +57,13 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, onBackToList, onB
   const handleBlockAdConfirm = () => {
     if (report) {
       // Perform ad blocking logic
-      toast.success(t('report.report_card.block_ad_success_message'), {
-        position: isRtl ? 'bottom-right' : 'bottom-left',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      toast(t('report.report_card.block_ad_success_message'));
     }
     setIsBlockAdDialogOpen(false);
   };
 
   return (
     <>
-      <CustomToast />
       <Card
         sx={{
           width: '40vw',
@@ -150,7 +136,7 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, onBackToList, onB
               {t('report.choose_evidence')}:
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
-              {report.image.map((image, index) => (
+              {report.evidenceFiles.map((image, index) => (
                 <Box
                   key={index}
                   sx={{
@@ -188,56 +174,16 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, onBackToList, onB
           </Grid>
         </Grid>
 
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: isRtl ? 'row-reverse' : 'row',
-            justifyContent: 'space-between',
-            gap: 2,
-            marginTop: 4,
-          }}
-        >
-        <Button
-          variant="outlined"
-          onClick={() => window.open(`/product/${report.reportedContentId}`, '_blank')}
-          sx={{
-            textTransform: 'none',
-          }}
-        >
-          {t('report.report_card.actions.go_to_ad')}
-        </Button>
+        <Box sx={{ display: 'flex', flexDirection: isRtl ? 'row-reverse' : 'row', justifyContent: 'space-between', gap: 2, marginTop: 4 }}>
+
+          <CustomButton text={t('report.report_card.actions.go_to_ad')} onClick={handleProductDetailsClick} fullWidth={true} />
 
           <Box sx={{ display: 'flex', gap: 2 }}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => setIsBlockAdDialogOpen(true)}
-              sx={{
-                textTransform: 'none',
-              }}
-            >
-              {t('report.report_card.actions.block_ad')}
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => setIsBlockDialogOpen(true)}
-              sx={{
-                textTransform: 'none',
-              }}
-            >
-              {t('report.report_card.actions.block_user')}
-            </Button>
+            <CustomButton text={t('report.report_card.actions.block_ad')} onClick={() => setIsBlockAdDialogOpen(true)} fullWidth={true} />
+            <CustomButton text={t('report.report_card.actions.block_user')} onClick={() => setIsBlockDialogOpen(true)} fullWidth={true} />
           </Box>
 
-          <Button
-            variant="outlined"
-            onClick={onBackToList}
-            sx={{
-              textTransform: 'none',
-            }}
-          >
-            {t('report.report_card.actions.back_to_list')}
-          </Button>
+          <CustomButton text={t('report.report_card.actions.back_to_list')} onClick={() => onBackToList()} fullWidth={true} />
         </Box>
 
         <Dialog open={!!openImage} onClose={handleCloseImage}>
@@ -254,111 +200,21 @@ const ReportDetails: React.FC<ReportDetailsProps> = ({ report, onBackToList, onB
         </Dialog>
       </Card>
 
-      <Dialog
-        open={isBlockDialogOpen}
+      <ConfirmationDialog
+        isDialogOpen={isBlockDialogOpen}
         onClose={() => setIsBlockDialogOpen(false)}
-        PaperProps={{
-          sx: {
-            borderRadius: 2,
-            padding: 2,
-          },
-        }}
-      >
-        <DialogContent
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 2,
-          }}
-        >
-          <Typography variant="h6" sx={{ textAlign: 'center', fontWeight: 'bold' }}>
-            {t('report.report_card.block_confirmation.title_usr')}
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 3 }}>
-            <IconButton
-              onClick={handleBlockConfirm}
-              sx={{
-                backgroundColor: 'green',
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-                '&:hover': { backgroundColor: '#66bb66' },
-              }}
-              aria-label={t('dialog.confirm')}
-            >
-              <CheckIcon />
-            </IconButton>
-            <IconButton
-              onClick={() => setIsBlockDialogOpen(false)}
-              sx={{
-                backgroundColor: 'red',
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-                '&:hover': { backgroundColor: '#ff4d4d' },
-              }}
-              aria-label={t('dialog.cancel')}
-            >
-              <CloseIcon />
-            </IconButton>
-          </Box>
-        </DialogContent>
-      </Dialog>
+        onCheck={() => handleBlockConfirm()}
+        message={t('report.report_card.block_confirmation.title_usr')}
+      />
 
-      <Dialog
-        open={isBlockAdDialogOpen}
+      <ConfirmationDialog
+        isDialogOpen={isBlockAdDialogOpen}
         onClose={() => setIsBlockAdDialogOpen(false)}
-        PaperProps={{
-          sx: {
-            borderRadius: 2,
-            padding: 2,
-          },
-        }}
-      >
-        <DialogContent
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 2,
-          }}
-        >
-          <Typography variant="h6" sx={{ textAlign: 'center', fontWeight: 'bold' }}>
-            {t('report.report_card.block_confirmation.title_ad')}
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 3 }}>
-            <IconButton
-              onClick={handleBlockAdConfirm}
-              sx={{
-                backgroundColor: 'green',
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-                '&:hover': { backgroundColor: '#66bb66' },
-              }}
-              aria-label={t('dialog.confirm')}
-            >
-              <CheckIcon />
-            </IconButton>
-            <IconButton
-              onClick={() => setIsBlockAdDialogOpen(false)}
-              sx={{
-                backgroundColor: 'red',
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-                '&:hover': { backgroundColor: '#ff4d4d' },
-              }}
-              aria-label={t('dialog.cancel')}
-            >
-              <CloseIcon />
-            </IconButton>
-          </Box>
-        </DialogContent>
-      </Dialog>
+        onCheck={() => handleBlockAdConfirm()}
+        message={t('report.report_card.block_confirmation.title_ad')}
+      />
+
+      {singleProduct && <ItemDetailsPopup singleProduct={singleProduct} />}
     </>
   );
 };

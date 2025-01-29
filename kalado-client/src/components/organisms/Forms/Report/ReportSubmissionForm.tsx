@@ -72,27 +72,12 @@ const ReportSubmissionForm: React.FC<ReportSubmissionFormProps> = ({ reportedCon
             return;
         }
 
-        try {
-            console.log('**************************** submitting form with data:', { ...formData });
-            console.log('**************************** images:', images);
-            console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ token:', token);
-            const response = await createReportWithImages(formData, images, token);
-            console.log('****************************** api response:', response);
-            if (response.isSuccess) {
-                handleClose();
-                toast(t("report.success.report_submitted"));
-            } else {
-                setError(response.message || t("report.error.submission_failed"));
-            }
-        } catch (err: any) {
-            console.error('****************************** error:', err);
-
-            if (err.response && err.response.data) {
-                console.error('****************************** backend error response:', err.response.data);
-                setError(err.response.data.message || t("report.error.submission_failed"));
-            } else {
-                setError(t("report.error.submission_failed"));
-            }
+        const response = await createReportWithImages(formData, images);
+        if (response.isSuccess) {
+            handleClose();
+            toast(t("report.success.report_submitted"));
+        } else {
+            setError(t("report.error.submission_failed"));
         }
     };
 

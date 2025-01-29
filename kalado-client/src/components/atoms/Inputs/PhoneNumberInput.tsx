@@ -9,6 +9,7 @@ interface PhoneNumberInputProps {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     isRequired?: boolean;
     isValidatorActive?: boolean;
+    disabled?: boolean;
 }
 
 const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
@@ -16,7 +17,8 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
     value,
     onChange,
     isRequired = true,
-    isValidatorActive = true
+    isValidatorActive = true,
+    disabled = false,
 }) => {
     const { t, i18n } = useTranslation();
     const translatedPlaceholder = placeholder || t('general_inputs.phone_number');
@@ -37,6 +39,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
             value={value}
             onChange={onChange}
             required={isRequired}
+            disabled={disabled}
             variant="standard"
             margin="normal"
             helperText={helperText}

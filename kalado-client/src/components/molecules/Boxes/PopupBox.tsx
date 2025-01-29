@@ -8,9 +8,11 @@ interface PopupBoxProps {
     open: boolean;
     children: React.ReactNode;
     onClose: () => void;
+    isLogoNeeded?: boolean;
+    maxContent?: boolean;
 }
 
-const PopupBox: React.FC<PopupBoxProps> = ({ open, children, onClose }) => {
+const PopupBox: React.FC<PopupBoxProps> = ({ open, children, onClose, isLogoNeeded = true, maxContent = false }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -30,7 +32,7 @@ const PopupBox: React.FC<PopupBoxProps> = ({ open, children, onClose }) => {
             }}
         >
             <Box sx={{
-                width: isMobile ? "90vw" : "450px",
+                width: isMobile ? "90vw" : (maxContent ? 'max-content' : "450px"),
                 padding: isMobile ? "10px 20px" : "25px 20px",
                 position: 'fixed',
                 top: '50%',
@@ -41,7 +43,7 @@ const PopupBox: React.FC<PopupBoxProps> = ({ open, children, onClose }) => {
                 overflowY: 'auto',
                 maxHeight: '90vh',
             }}>
-                <Logo />
+                {isLogoNeeded && <Logo />}
                 <CustomButton
                     onClick={onClose}
                     style={{

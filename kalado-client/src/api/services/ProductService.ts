@@ -28,7 +28,7 @@ export async function deleteAd(adId: number) {
     );
 }
 
-export async function updateAd(productId: number, productData: ProductData) {
+export async function updateAd(productId: number, productData: TProductResponseType) {
     return sendRequest<TProductResponseType>(
         PRODUCT.UPDATE(productId),
         'PUT',
@@ -43,7 +43,7 @@ export async function updateAdStatus(productId: number, status: string) {
         PRODUCT.UPDATE_STATUS(productId),
         'PUT',
         { status },
-        {}, 
+        {},
         'application/json'
     );
 }

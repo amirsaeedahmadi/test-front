@@ -9,6 +9,8 @@ export { default as SideBar } from './Boxes/SideBarBox';
 
 export { default as CustomToast } from './CustomToast/CustomToast';
 
+export { default as ConfirmationDialog } from './Dialogs/ConfirmationDialog';
+
 export { default as IconList } from './Lists/IconList';
 export { default as LabelList } from './Lists/LabelList';
 

@@ -44,7 +44,6 @@ const PriceInput: React.FC<PriceInputProps> = ({
     };
 
     return (
-
         <TextField
             type="text"
             name="price"
@@ -72,7 +71,6 @@ const PriceInput: React.FC<PriceInputProps> = ({
             }}
             sx={{ width: '70%' }}
         />
-
     );
 };
 

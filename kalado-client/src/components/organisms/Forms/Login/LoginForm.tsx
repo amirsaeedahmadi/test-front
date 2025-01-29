@@ -5,7 +5,7 @@ import { PopupBox } from '../../../molecules';
 import { loginUser } from '../../../../api/services/AuthService';
 import { toast } from 'react-toastify';
 import { useAuth, useModalContext } from '../../../../contexts';
-import { validateEmail, validatePassword } from '../../../../validators';
+import { validateEmail } from '../../../../validators';
 
 
 const LoginForm: React.FC = () => {
@@ -27,14 +27,7 @@ const LoginForm: React.FC = () => {
             setAreInputsValid(false);
             return false;
         }
-
-        // const passwordValidationResult = validatePassword(formData.password, t);
-        // if (!passwordValidationResult.valid) {
-        //     setError(emailValidationResult.error);
-        //     setAreInputsValid(false);
-        //     return false;
-        // }
-
+        setAreInputsValid(true);
         return true;
     };
 
@@ -67,7 +60,6 @@ const LoginForm: React.FC = () => {
                 <EmailInput
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    isValidatorActive={true}
                 />
                 <PasswordInput
                     value={formData.password}
@@ -76,7 +68,7 @@ const LoginForm: React.FC = () => {
                 <CustomButton
                     text={t("login_form.login_btn")}
                     type="submit"
-                // disabled={!areInputsValid}
+                    disabled={!areInputsValid}
                 />
                 <CustomLink
                     to="/#"

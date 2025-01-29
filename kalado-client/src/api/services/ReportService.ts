@@ -1,25 +1,9 @@
 import { sendRequest } from './axiosInstance';
 import { REPORT } from './urls';
-import {
-    ReportData,
-    ReportStatusUpdateData,
-    ReportResponse,
-    SingleReport,
-    ReportListResponse,
-    TReportResponseType,
-} from '../../constants/apiTypes';
+import { ReportData, ReportStatusUpdateData, TReportResponseType } from '../../constants/apiTypes';
 
 
-export async function createReportWithImages(reportData: ReportData, imageFiles: File[], token: string | null) {
-    console.log('**************************** createReportWithImages called');
-    console.log('**************************** reportData:', reportData);
-    console.log('**************************** imageFiles:', imageFiles);
-
-    console.log('****************************token retrieved from useAuth:', token);
-    if (token == null) {
-        throw new Error('user is not authenticated');
-    }
-
+export async function createReportWithImages(reportData: ReportData, imageFiles: File[]) {
     const formData = new FormData();
     console.log('**************************** formData: ', formData);
     formData.append('report', JSON.stringify(reportData));
@@ -33,22 +17,14 @@ export async function createReportWithImages(reportData: ReportData, imageFiles:
         console.log(i[0], i[1]);
     }
 
-    try {
-        const response = await sendRequest<TReportResponseType>(
-            REPORT.CREATE,
-            'POST',
-            formData,
-            {},
-            'multipart/form-data'
-        );
-        console.log('****************************  api response:', response);
-        return response;
-    } catch (error) {
-        console.error('****************************  error in createReportWithImages:', error);
-        throw error;
-    }
+    return sendRequest<TReportResponseType>(
+        REPORT.CREATE,
+        'POST',
+        formData,
+        {},
+        'multipart/form-data'
+    );
 }
-
 
 export async function updateReportStatus(reportId: number, reportStatusData: ReportStatusUpdateData) {
     return sendRequest<TReportResponseType>(
@@ -60,17 +36,15 @@ export async function updateReportStatus(reportId: number, reportStatusData: Rep
     );
 }
 
-
 export async function getAllReports() {
     return sendRequest<TReportResponseType[]>(
         REPORT.GET_ALL_REPORTS,
-        'GET',        
+        'GET',
         undefined,
         {},
         'application/json'
     );
 }
-
 
 export async function getMyReports() {
     return sendRequest<TReportResponseType[]>(
@@ -85,7 +59,6 @@ export async function getReportsToUserId(userId: number) {
         'GET',
     );
 }
-
 
 // fetch report statistics for a date range
 export async function getReportStatistics(startDate: string, endData: string) {

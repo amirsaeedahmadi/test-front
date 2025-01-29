@@ -33,12 +33,30 @@ export async function verifyCode(code: string) {
     );
 }
 
-export async function resetPassword(email: string) {
+export async function forgetPassword(email: string) {
+    return sendRequest(
+        AUTH.FORETPASSWORD,
+        'POST',
+        { email },
+        {},
+        'application/json'
+    );
+}
+
+export async function resetPassword(token: string, newPassword: string) {
     return sendRequest(
         AUTH.RESETPASSWORD,
         'POST',
-        email,
+        { token, newPassword },
         {},
         'application/json'
+    );
+}
+
+export async function changeUserToAdmin(userId: number) {
+    return sendRequest(
+        AUTH.CHANGEUSERTOADMIN,
+        'PUT',
+        userId,
     );
 }

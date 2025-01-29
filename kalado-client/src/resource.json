@@ -15,7 +15,8 @@
             "add_image": "Add Image",
             "description": "Description",
             "category": "Category",
-            "no_option": "No option"
+            "no_option": "No option",
+            "token": "Token"
         },
         "navbar": {
             "create_ad": "Submit Ad",
@@ -87,7 +88,9 @@
         },
         "forget_password_form": {
             "enter_your_email": "Enter your email to retrieve your password.",
-            "forget_password_btn": "Send Email"
+            "forget_password_btn": "Send Email",
+            "enter_new_passwrod": "Eneter your new passowrd.",
+            "change_password_btn": "Change password"
         },
         "signup_form": {
             "signup_btn": "Signup",
@@ -123,7 +126,11 @@
                 "one": "Abusiveness",
                 "two": "Inappropriate Content",
                 "three": "Inappropriate Price",
-                "four": "Others"
+                "four": "Others",
+                "INAPPROPRIATE_CONTENT": "Inappropriate Content",
+                "OTHER_VIOLATION_TYPES": "Others",
+                "ABUSIVENESS": "Abusiveness",
+                "INAPPROPRIATE_PRICE": "Inappropriate Price"
             },
             "choose_evidence": "Evidence/Documents",
             "user_management": {
@@ -134,9 +141,10 @@
                 "allowed": "Allowed",
                 "blocked": "Blocked",
                 "confirmation_title": "Change User Status",
-                "confirmation_message": "Are you sure you want to change the status of {{email}} to {{status}}?",
+                "confirmation_message": "Are you sure you want to change the user's status?",
                 "confirm": "Confirm",
-                "cancel": "Cancel"
+                "cancel": "Cancel",
+                "become_admin": "Become Admin"
             },
             "report_card": {
                 "history_title": "Violation History",
@@ -174,8 +182,7 @@
             "user": {
                 "menu": {
                     "one": "Profile Management",
-                    "two": "Ads Management",
-                    "three": "Report History"
+                    "two": "Ads Management"
                 },
                 "profile_management": {
                     "first_name": "First Name",
@@ -185,14 +192,26 @@
                     "phone_number": "Phone Number",
                     "address": "Address",
                     "save_changes_btn": "Save Changes",
-                    "enter_new_password": "Enter new password"
+                    "new_password": "Enter your new password",
+                    "current_password": "Enter your current password",
+                    "repeat_new_password": "Enter your new password again"
                 }
             },
             "admin": {
                 "menu": {
-                    "one": "Profile Management",
-                    "two": "Users Management",
-                    "three": "Report History"
+                    "one": "Users Management",
+                    "two": "Report History"
+                },
+                "user_management": {
+                    "user_info": "User Information",
+                    "email": "Email Address",
+                    "status": "Status",
+                    "allowed": "Allowed",
+                    "blocked": "Blocked",
+                    "confirmation_message": "Are you sure you want to make the user an admin?",
+                    "confirm": "Confirm",
+                    "cancel": "Cancel",
+                    "become_admin": "Become Admin"
                 }
             }
         },
@@ -262,10 +281,14 @@
             },
             "user_management": {
                 "retrive_failed": "Error ocurred during retriving user's list.",
-                "block_failed": "Error ocurred during blocking the user."
+                "block_failed": "Error ocurred during blocking the user.",
+                "become_admin_failed": "Error ocurred during changing the user to admin."
             },
             "ad_management": {
-                "retrieve_failed": "Error ocurred during retriving your ad's list."
+                "retrieve_failed": "Error ocurred during retriving your ad's list.",
+                "status_change_failed": "Error ocurred during changing your ad's status.",
+                "delete_failed": "Error ocurred during deleting your ad.",
+                "edit_failed": "Error ocurred during save your changes."
             },
             "report_history": {
                 "retrieve_failed": "Error ocurred during retriving your reports."
@@ -282,7 +305,8 @@
             "signup": "Registered successfully. Please verify your email.",
             "code_verification": "Your email verified successfully.",
             "login": "You are welcome!",
-            "forget_password": "A new password is sent to your email.",
+            "reset_password": "Your password changed successfully.",
+            "forget_password": "Password's token sent to your email successsfully.",
             "create_ad": "Ad created successfully.",
             "report": "Report submitted successfully.",
             "profile_management": "Changes saved successfully.",
@@ -290,6 +314,11 @@
             "user_management": {
                 "block_user": "User banned successfully.",
                 "admin_user": "User become admin successfully."
+            },
+            "ad_management": {
+                "status_change": "Ad's status changed successfully",
+                "delete": "Ad deleted successfully.",
+                "edit": "Ad edited successfully."
             }
         }
     },
@@ -309,7 +338,8 @@
             "add_image": "افزودن عکس",
             "description": "توضیحات",
             "category": "دسته‌بندی",
-            "no_option": "بدون گزینه"
+            "no_option": "بدون گزینه",
+            "token": "توکن"
         },
         "navbar": {
             "create_ad": "ثبت آگهی",
@@ -381,7 +411,9 @@
         },
         "forget_password_form": {
             "enter_your_email": "لطفا ایمیل خود را برای بازیابی رمز عبور وارد نمایید.",
-            "forget_password_btn": "بازیابی رمز عبور"
+            "forget_password_btn": "بازیابی رمز عبور",
+            "enter_new_passwrod": "رمز عبور جدید خود را وارد نمایید.",
+            "change_password_btn": "تغییر رمز عبور"
         },
         "signup_form": {
             "signup_btn": "ثبت‌نام",
@@ -417,7 +449,11 @@
                 "one": "فحاشی",
                 "two": "محتوای نامناسب",
                 "three": "قیمت نامتناسب با بازار",
-                "four": "سایر موارد"
+                "four": "سایر موارد",
+                "INAPPROPRIATE_CONTENT": "محتوای نامناسب",
+                "OTHER_VIOLATION_TYPES": "سایر موارد",
+                "ABUSIVENESS": "فحاشی",
+                "INAPPROPRIATE_PRICE": "قیمت نامتناسب با بازار"
             },
             "choose_evidence": "شواهد/مدارک",
             "user_management": {
@@ -428,9 +464,10 @@
                 "allowed": "مجاز",
                 "blocked": "مسدود",
                 "confirmation_title": "تغییر وضعیت کاربر",
-                "confirmation_message": "آیا مطمئن هستید که می‌خواهید وضعیت {{email}} را به {{status}} تغییر دهید؟",
+                "confirmation_message": "آیا مطمئن هستید که می‌خواهید وضعیت کاربر را تغییر دهید؟",
                 "confirm": "تأیید",
-                "cancel": "لغو"
+                "cancel": "لغو",
+                "become_admin": "ادمین شو"
             },
             "report_card": {
                 "history_title": "تاریخچه تخلفات",
@@ -468,8 +505,7 @@
             "user": {
                 "menu": {
                     "one": "مدیریت پروفایل",
-                    "two": "مدیریت آگهی‌ها",
-                    "three": "تاریخچه‌ی تخلفات"
+                    "two": "مدیریت آگهی‌ها"
                 },
                 "profile_management": {
                     "first_name": "نام",
@@ -479,14 +515,27 @@
                     "phone_number": "شماره تلفن",
                     "address": "محل سکونت",
                     "save_changes_btn": "ذخیره تغییرات",
-                    "enter_new_password": "رمز عبور جدید خود را وارد نمایید"
+                    "new_password": "رمز عبور جدید خود را وارد نمایید",
+                    "current_password": "رمز عبور فعلی خود را وارد نمایید",
+                    "repeat_new_password": "رمز عبور جدید خود را دوباره وارد نمایید"
                 }
             },
             "admin": {
                 "menu": {
-                    "one": "مدیریت پروفایل",
-                    "two": "مدیریت کاربران",
-                    "three": "تاریخچه‌ی تخلفات"
+                    "one": "مدیریت کاربران",
+                    "two": "تاریخچه‌ی تخلفات"
+                },
+                "user_management": {
+                    "user_info": "اطلاعات کاربر",
+                    "title": "مدیریت کاربران",
+                    "email": "آدرس ایمیل",
+                    "status": "وضعیت",
+                    "allowed": "مجاز",
+                    "blocked": "مسدود",
+                    "confirmation_message": "آیا مطمئن هستید که می‌خواهید کاربر را ادمین کنید؟",
+                    "confirm": "تأیید",
+                    "cancel": "لغو",
+                    "become_admin": "ادمین شو"
                 }
             }
         },
@@ -556,10 +605,14 @@
             },
             "user_management": {
                 "retrive_failed": "خطایی در گرفتن لیست کاربران رخ داد.",
-                "block_failed": "خطایی در مسدودسازی کاربر رخ داد."
+                "block_failed": "خطایی در مسدودسازی کاربر رخ داد.",
+                "become_admin_failed": "خطایی در ادمین کردن کاربر رخ داد."
             },
             "ad_management": {
-                "retrieve_failed": "خطایی در گرفتن لیست آگهی‌هایتان رخ داد."
+                "retrieve_failed": "خطایی در گرفتن لیست آگهی‌هایتان رخ داد.",
+                "status_change_failed": "خطایی در تغییر وضعیت آگهی رخ داد.",
+                "delete_failed": "خطایی در حذف آگهی رخ داد.",
+                "edit_failed": "خطایی در ذخیره‌ی تغییرات رخ داد."
             },
             "report_history": {
                 "retrieve_failed": "خطایی در گرفتن تاریخچه‌ی تخلفات رخ داد."
@@ -576,7 +629,8 @@
             "signup": "ثبت‌نام شما با موفقیت انجام شد. لطفا ایمیل خود را تایید نمایید.",
             "code_verification": "ایمیل شما با موفقیت تایید شد.",
             "login": "خوش آمدید!",
-            "forget_password": "رمز عبور جدیدی به ایمیل شما فرستاده شد.",
+            "reset_password": "رمز عبور شما با موفقیت تغییر کرد.",
+            "forget_password": "توکن رمز عبور با موفقیت به ایمیل شما ارسال شد.",
             "create_ad": "آگهی شما با موفقیت ثبت شد.",
             "report": "گزارش تخلف شما با موفقیت ثبت شد.",
             "profile_management": "تغییرات شما با موفقیت ذخیره شد.",
@@ -584,6 +638,11 @@
             "user_management": {
                 "block_user": "کاربر با موفقیت مسدود شد.",
                 "admin_user": "کاربر با موفقیت ادمین شد."
+            },
+            "ad_management": {
+                "status_change": "وضعیت آگهی با موفقیت تغییر کرد.",
+                "delete": "آگهی با موفقیت حذف شد.",
+                "edit": "آگهی با موفقیت ویرایش شد."
             }
         }
     }

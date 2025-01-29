@@ -4,7 +4,7 @@ import { NameInput, PriceInput, YearInput, Dropdown, DescriptionInput, CustomBut
 import { PopupBox, ImageUploadBox } from '../../../molecules';
 import { createProductWithImages } from '../../../../api/services/ProductService';
 import { toast } from 'react-toastify';
-import { useModalContext, useAuth } from '../../../../contexts';
+import { useModalContext } from '../../../../contexts';
 import { OptionsComponent } from '../../../../constants/options';
 import { ProductData } from '../../../../constants/apiTypes';
 
@@ -22,7 +22,6 @@ const CreateAdForm: React.FC = () => {
         productionYear: null,
         brand: null,
     });
-    const { token } = useAuth();
     const [images, setImages] = useState<File[]>([]);
     const [error, setError] = useState<string>('');
     const { product_categories } = OptionsComponent();
@@ -41,8 +40,6 @@ const CreateAdForm: React.FC = () => {
         setFormData(prevData => ({
             ...prevData,
             productionYear: date
-
-
         }));
     };
 
